@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import Button from '../components/Button';
 import SkaterAnimation from '../components/SkaterAnimation';
 import FavoritesRanking from '../components/FavoritesRanking';
+import SponsorsCarousel from '../components/SponsorsCarousel';
 
 const HomePage: React.FC = () => {
   const { currentUser, isAdminLoggedIn } = useAuth();
@@ -147,6 +148,9 @@ const HomePage: React.FC = () => {
 
       {/* Favorites Ranking */}
       <FavoritesRanking />
+
+      {/* Sponsors Carousel */}
+      <SponsorsCarousel />
 
       {/* Specialties Showcase */}
       <div className="text-center space-y-8">
