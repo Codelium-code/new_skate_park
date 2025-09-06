@@ -4,6 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { UserPlus, LogIn, Shield, Keyboard as Skateboarding, Trophy, Users, Star } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import SkaterAnimation from '../components/SkaterAnimation';
+import FavoritesRanking from '../components/FavoritesRanking';
 
 const HomePage: React.FC = () => {
   const { currentUser, isAdminLoggedIn } = useAuth();
@@ -90,6 +92,15 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
+      {/* Skater Animation Section */}
+      <div className="space-y-6">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-white mb-2">Evento en Vivo</h2>
+          <p className="text-gray-300">Experimenta la adrenalina del skateboarding profesional</p>
+        </div>
+        <SkaterAnimation />
+      </div>
+
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {features.map((feature) => {
@@ -133,6 +144,9 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </Card>
+
+      {/* Favorites Ranking */}
+      <FavoritesRanking />
 
       {/* Specialties Showcase */}
       <div className="text-center space-y-8">
