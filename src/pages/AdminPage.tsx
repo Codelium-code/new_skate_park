@@ -19,6 +19,7 @@ import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Select from '../components/Select';
+import StageEvaluationForm from '../components/StageEvaluationForm';
 
 const AdminPage: React.FC = () => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const AdminPage: React.FC = () => {
   const [specialtyFilter, setSpecialtyFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedSkater, setSelectedSkater] = useState<Skater | null>(null);
+  const [activeTab, setActiveTab] = useState<'participants' | 'tournament'>('participants');
 
   if (!isAdminLoggedIn) {
     navigate('/admin-login');
@@ -109,8 +111,44 @@ const AdminPage: React.FC = () => {
       <div className="text-center">
         <h1 className="text-3xl font-bold text-white mb-2">Panel Administrativo</h1>
         <p className="text-gray-300">Gestiona todos los participantes de SkatePark Pro</p>
+        
+        {/* Tab Navigation */}
+        <div className="flex justify-center mt-6">
+          <div className="flex bg-white/5 rounded-lg p-1">
+            <button
+              onClick={() => setActiveTab('participants')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'participants'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              <Users size={16} className="mr-2 inline" />
+              Participantes
+            </button>
+            <button
+              onClick={() => setActiveTab('tournament')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'tournament'
+                  ? 'bg-orange-500 text-white'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              <Trophy size={16} className="mr-2 inline" />
+              Evaluaciones
+            </button>
+          </div>
+        </div>
       </div>
 
+      {activeTab === 'tournament' && (
+        <div className="space-y-8">
+          <StageEvaluationForm />
+        </div>
+      )}
+
+      {activeTab === 'participants' && (
+        <>
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="text-center">
@@ -382,6 +420,8 @@ const AdminPage: React.FC = () => {
           )}
         </div>
       </div>
+        </>
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Keyboard as Skateboarding, Home, Users, UserCircle, LogOut, Shield } from 'lucide-react';
+import { Keyboard as Skateboarding, Home, Users, UserCircle, LogOut, Shield, Trophy } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 interface LayoutProps {
@@ -73,6 +73,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     <span>Admin</span>
                   </Link>
                 )}
+                
+                <Link
+                  to="/resultados"
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    isActive('/resultados') 
+                      ? 'text-orange-400 bg-orange-500/10' 
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Trophy size={16} />
+                  <span>Resultados</span>
+                </Link>
               </div>
             </div>
 

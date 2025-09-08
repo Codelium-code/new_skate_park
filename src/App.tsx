@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminPage from './pages/AdminPage';
+import TournamentResultsPage from './pages/TournamentResultsPage';
 
 // Protected Route Component for User Routes
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -47,6 +48,7 @@ function App() {
                 </AdminRoute>
               } 
             />
+            <Route path="/resultados" element={<TournamentResultsPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Layout>
