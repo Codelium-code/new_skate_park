@@ -68,11 +68,11 @@ export const tournamentStorage = {
         .filter(e => e.stage === stage.id)
         .sort((a, b) => b.score - a.score); // Sort by score descending
 
-      const participants = stageEvaluations.map((eval, index) => ({
-        id: eval.participantId,
-        name: eval.participantName,
-        score: eval.score,
-        accepted: eval.accepted,
+      const participants = stageEvaluations.map((evaluation, index) => ({
+        id: evaluation.participantId,
+        name: evaluation.participantName,
+        score: evaluation.score,
+        accepted: evaluation.accepted,
         position: index + 1
       }));
 
